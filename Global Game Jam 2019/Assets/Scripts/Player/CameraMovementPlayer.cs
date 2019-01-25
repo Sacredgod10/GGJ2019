@@ -8,9 +8,16 @@ public class CameraMovementPlayer : MonoBehaviour
     private float speedVertical = 1f;
     [SerializeField]
     private float speedHorizontal = 1f;
+    [SerializeField]
+    private float crouchBy = 0.05f;
+    [SerializeField]
+    private float topHeightCamera = 1f;
+    [SerializeField]
+    private float lowestHeightCamera = 1f;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
+    private float cameraHeight = 0.0f;
 
     private CursorLockMode cursorState;
 
@@ -38,6 +45,15 @@ public class CameraMovementPlayer : MonoBehaviour
             cursorState = CursorLockMode.Locked;
             SetCursorState();
         }
+
+        if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.LeftControl))
+        {
+            Crouch(true);
+        }
+        else
+        {
+            Crouch(false);
+        }
     }
 
     void SetCursorState()
@@ -45,5 +61,25 @@ public class CameraMovementPlayer : MonoBehaviour
         Cursor.lockState = cursorState;
         // Hide cursor when locking
         Cursor.visible = (CursorLockMode.Locked != cursorState);
+    }
+
+    private void Crouch(bool perform)
+    {
+        cameraHeight = transform.localPosition.y;
+        if (perform)
+        {
+            if (cameraHeight > lowestHeightCamera)
+            {
+                cameraHeight -= crouchBy;
+            }
+        }
+        else
+        {
+            if (cameraHeight < topHeightCamera)
+            {
+                cameraHeight += crouchBy;
+            }
+        }
+        transform.localPosition = new Vector3(transform.localPosition.x, cameraHeight, transform.localPosition.z);
     }
 }
