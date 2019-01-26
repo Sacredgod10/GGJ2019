@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public GameObject player;
+    public GameObject bottleNote;
+    public GameObject showerNote;
     public Camera gameCamera;
     public bool itemInHand = false;
     public float lerpSpeed = 1;
@@ -17,7 +19,9 @@ public class Interaction : MonoBehaviour
         REMOTE,
         PILLOW,
         MONITOR,
-        PAPER
+        PAPER,
+        SHOWER,
+        BOTTLE
     }
 
     public InteractionType interactionType;
@@ -41,8 +45,7 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.REMOTE:
                 {
-                    var holdObject = player.GetComponent<HoldObject>();
-                    holdObject.PlaceObject(gameObject);
+                    Destroy(gameObject);
                     break;
                 }
             case InteractionType.MONITOR:
@@ -59,6 +62,18 @@ public class Interaction : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 }
+            case InteractionType.SHOWER:
+                {
+                    StartCoroutine(ShowerStream());
+                    break;
+                }
+            case InteractionType.BOTTLE:
+                {
+                    GameObject note = Instantiate(bottleNote, gameObject.transform.position + new Vector3(0, 10, 0), Quaternion.identity);
+                    note.transform.eulerAngles += new Vector3(90, 0, 0);
+                    Destroy(gameObject);
+                    break;
+                }
         }
     }
 
@@ -70,5 +85,13 @@ public class Interaction : MonoBehaviour
         {
             lerping = false;
         }
+    }
+
+    public IEnumerator ShowerStream()
+    {
+        // poor water
+        yield return new WaitForSeconds(10);
+        // Stop pooring water
+        Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
     }
 }
