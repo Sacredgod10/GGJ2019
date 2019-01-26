@@ -27,7 +27,7 @@ public class InteractableObject : MonoBehaviour
     {
         CheckForEmission();
 
-        if(shineCounter > (shineCounterLimit * 0.5) && Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(KeyCode.F) && beingLookedAt)
         {
             interaction.Interact();
         }

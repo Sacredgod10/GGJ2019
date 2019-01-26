@@ -496,6 +496,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4578218464977252852, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
+        type: 3}
+      propertyPath: interactionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138412284, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4, type: 3}
+      propertyPath: interactionType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4, type: 3}
 --- !u!4 &730659113 stripped
@@ -848,6 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInHand: 0
+  interactionType: 0
 --- !u!1001 &1428642375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1272,6 +1283,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1377541272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1726583625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: a84bcdff45b3bee44b4929b40b00e92f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1467447269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726583626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726583625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c329bca5a78ae4ab8647d5cac08707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 0
+  glowIntensity: 1
+  shineCounter: 0
+  previousShineCounter: 0
+  shineCounterLimit: 10
+  onlyInteractWhenCrouching: 0
+  beingLookedAt: 0
+--- !u!114 &1726583627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726583625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemInHand: 0
+  interactionType: 2
 --- !u!1 &1770741399
 GameObject:
   m_ObjectHideFlags: 0
