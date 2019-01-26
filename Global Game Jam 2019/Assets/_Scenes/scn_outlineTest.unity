@@ -112,24 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &138412278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1379886452854432587, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 366661522}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &138412284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138412278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &366661522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,15 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5963405537432710233, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
-        type: 3}
-      propertyPath: shineCounterLimit
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: shineCounterLimit
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 6814528338105175010, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
         type: 3}
       propertyPath: m_Name
@@ -807,6 +780,8 @@ MonoBehaviour:
   crouchBy: 0.05
   topHeightCamera: 0.55
   lowestHeightCamera: -0.55
+  lowestRotationCamera: 1
+  topRotationCamera: 1
   playerMovement: {fileID: 0}
 --- !u!114 &771042813
 MonoBehaviour:
@@ -887,24 +862,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1589512121 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6945377056951620, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 366661522}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1589512122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589512121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630313587
 GameObject:
   m_ObjectHideFlags: 0
