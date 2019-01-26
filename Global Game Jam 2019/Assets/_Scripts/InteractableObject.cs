@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interaction))]
 public class InteractableObject : MonoBehaviour
 {
     public float interactionRange;
