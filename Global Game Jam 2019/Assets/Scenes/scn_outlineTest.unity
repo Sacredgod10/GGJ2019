@@ -502,7 +502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143149dd5de2ec94b93b7262da46709e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedNormal: 0
   speed: 2
+  speedCrouched: 0
   gravity: 20
   cameraTransform: {fileID: 771042809}
 --- !u!143 &674033779
@@ -792,6 +794,7 @@ MonoBehaviour:
   crouchBy: 0.05
   topHeightCamera: 0.55
   lowestHeightCamera: -0.55
+  playerMovement: {fileID: 0}
 --- !u!114 &771042813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,7 +880,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 366661522}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1589512123
+--- !u!114 &1589512122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -886,13 +889,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589512121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c329bca5a78ae4ab8647d5cac08707, type: 3}
+  m_Script: {fileID: 11500000, guid: c740b6fc9360e9c4e861d5a74770a5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionRange: 0
-  glowIntensity: 0.5
+  glowIntensity: 1
   shineCounter: 0
-  shineCounterLimit: 20
+  previousShineCounter: 0
+  shineCounterLimit: 10
   onlyInteractWhenCrouching: 0
   beingLookedAt: 0
 --- !u!65 &1589512126
