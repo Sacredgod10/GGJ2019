@@ -16,7 +16,8 @@ public class Interaction : MonoBehaviour
     {
         REMOTE,
         PILLOW,
-        MONITOR
+        MONITOR,
+        PAPER
     }
 
     public InteractionType interactionType;
@@ -51,6 +52,11 @@ public class Interaction : MonoBehaviour
                     startPosition = gameCamera.transform.position;
                     endPosition = cameraPerspective.transform.position;
                     gameObject.GetComponent<MonitorInput>().enabled = true;
+                    break;
+                }
+            case InteractionType.PAPER:
+                {
+                    Destroy(gameObject);
                     break;
                 }
         }
