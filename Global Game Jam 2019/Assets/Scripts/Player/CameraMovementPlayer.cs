@@ -14,6 +14,11 @@ public class CameraMovementPlayer : MonoBehaviour
     private float topHeightCamera = 1f;
     [SerializeField]
     private float lowestHeightCamera = 1f;
+    [SerializeField]
+    private float lowestRotationCamera = 1f;
+    [SerializeField]
+    private float topRotationCamera = 1f;
+
 
     public PlayerMovement playerMovement;
 
@@ -32,7 +37,7 @@ public class CameraMovementPlayer : MonoBehaviour
     private void Update()
     {
         yaw += speedHorizontal * Input.GetAxis("Mouse X");
-        pitch -= speedVertical * Input.GetAxis("Mouse Y");
+        pitch = Mathf.Clamp(pitch - speedVertical * Input.GetAxis("Mouse Y"), lowestRotationCamera, topRotationCamera);
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
 
