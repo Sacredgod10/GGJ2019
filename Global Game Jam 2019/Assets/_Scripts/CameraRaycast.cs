@@ -25,10 +25,13 @@ public class CameraRaycast : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
+
             if (hit.collider.gameObject.GetComponent<InteractableObject>())
             {
                 lastObjectSeen = hit.collider.gameObject;
+                Debug.Log(lastObjectSeen);
             }
+
             if (lastObjectSeen)
             {
                 var interactAble = lastObjectSeen.transform.gameObject.GetComponent<InteractableObject>();

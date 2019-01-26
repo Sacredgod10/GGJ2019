@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    private GameObject thisObject;
+    public GameObject player;
 
     public bool itemInHand = false;
 
@@ -17,23 +17,19 @@ public class Interaction : MonoBehaviour
 
     public InteractionType interactionType;
 
-    private void Start()
-    {
-        thisObject = gameObject;
-    }
     public void Interact()
     {
         switch (interactionType)
         {
             case InteractionType.PILLOW:
                 {
-                    Destroy(thisObject);
+                    Destroy(gameObject);
                     break;
                 }
             case InteractionType.REMOTE:
                 {
-                    // Put in hand
-                    itemInHand = true;
+                    var holdObject = player.GetComponent<HoldObject>();
+                    holdObject.PlaceObject(gameObject);
                     break;
                 }
             case InteractionType.MONITOR:
