@@ -41,34 +41,61 @@ public class CharacteristicsAndData : MonoBehaviour
     public string name;
     public Pets favPet;
     public Characteristic characteristic;
-    public int date;
-    public List<GameObject> currentRooms;
-    public int[] happyPercentages;
+    public int date = 25;
+    public int currentRooms;
+    public List<int> happyPercentages;
     public GameObject player;
     public Vector3 spawnPos;
     public GameObject[] allRooms;
 
-    public void Start()
-    {
-        happyPercentages = new int[currentRooms.Count];
-    }
-
     public void Sleep()
     {
         date++;
-        player.transform.position = spawnPos;
-        for (int i = 0; i < happyPercentages.Length; i++)
+        for (int i = 0; i < happyPercentages.Count; i++)
         {
-            if (i < 100)
+            if (happyPercentages[i] < 100)
             {
-                i += 15;
+                happyPercentages[i] += 15; // Add 15 percent to each unlocked room's happyness
+            }
+
+            if (happyPercentages[i] >= 25 && happyPercentages[i] < 50) // Reward 1
+            {
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[0].SetActive(true);
+            }
+            else if (happyPercentages[i] >= 50 && happyPercentages[i] < 75) // Reward 2
+            {
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[1].SetActive(true);
+            }
+            else if (happyPercentages[i] >= 75 && happyPercentages[i] < 100) // Reward 3
+            {
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[2].SetActive(true);
+            }
+            else if (happyPercentages[i] >= 100) // Reward 4
+            {
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[3].SetActive(true);
             }
         }
+
+        if (currentRooms < allRooms.Length - 1)
+        {
+            AddNewRoom();
+        }
+
+        player.transform.Translate(spawnPos);
     }
 
     public void AddNewRoom()
     {
-
+        currentRooms++;
+        happyPercentages.Add(new int());
+        allRooms[currentRooms].SetActive(true);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Sleep();
+        }
+    }
 }
