@@ -15,6 +15,8 @@ public class CameraMovementPlayer : MonoBehaviour
     [SerializeField]
     private float lowestHeightCamera = 1f;
 
+    public PlayerMovement playerMovement;
+
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     private float cameraHeight = 0.0f;
@@ -70,6 +72,7 @@ public class CameraMovementPlayer : MonoBehaviour
         {
             if (cameraHeight > lowestHeightCamera)
             {
+                playerMovement.speed = playerMovement.speedCrouched;
                 cameraHeight -= crouchBy;
             }
         }
@@ -78,6 +81,7 @@ public class CameraMovementPlayer : MonoBehaviour
             if (cameraHeight < topHeightCamera)
             {
                 cameraHeight += crouchBy;
+                playerMovement.speed = playerMovement.speedNormal;
             }
         }
         transform.localPosition = new Vector3(transform.localPosition.x, cameraHeight, transform.localPosition.z);
