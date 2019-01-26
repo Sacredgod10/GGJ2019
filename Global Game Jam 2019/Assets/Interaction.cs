@@ -29,7 +29,7 @@ public class Interaction : MonoBehaviour
             case InteractionType.REMOTE:
                 {
                     var holdObject = player.GetComponent<HoldObject>();
-                    holdObject.PlaceObject(gameObject);
+                    holdObject.Interact(gameObject);
                     break;
                 }
             case InteractionType.MONITOR:

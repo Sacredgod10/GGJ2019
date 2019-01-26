@@ -25,11 +25,9 @@ public class CameraRaycast : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
-
             if (hit.collider.gameObject.GetComponent<InteractableObject>())
             {
                 lastObjectSeen = hit.collider.gameObject;
-                Debug.Log(lastObjectSeen);
             }
 
             if (lastObjectSeen)
@@ -37,6 +35,7 @@ public class CameraRaycast : MonoBehaviour
                 var interactAble = lastObjectSeen.transform.gameObject.GetComponent<InteractableObject>();
                 interactAble.shineCounter++;
                 interactAble.beingLookedAt = true;
+                Debug.Log(lastObjectSeen + " " + interactAble.beingLookedAt);
             }
         }
         else
@@ -46,6 +45,7 @@ public class CameraRaycast : MonoBehaviour
                 var interactAble = lastObjectSeen.transform.gameObject.GetComponent<InteractableObject>();
                 interactAble.shineCounter = 0;
                 interactAble.beingLookedAt = false;
+                Debug.Log(lastObjectSeen + " " + interactAble.beingLookedAt);
             }
         }
     }
