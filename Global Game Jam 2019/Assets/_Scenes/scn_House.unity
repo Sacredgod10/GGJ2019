@@ -1545,7 +1545,7 @@ PrefabInstance:
     - target: {fileID: 2887820507268355205, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2887820507268355204, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
@@ -2753,7 +2753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d7f29f1845d0834eac9a886245474ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.16
+      value: -4.37
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d7f29f1845d0834eac9a886245474ae, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2813,26 +2813,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f1bbc0756deae44bbf425221bd01223, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d7f29f1845d0834eac9a886245474ae, type: 3}
---- !u!1 &688898830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 9d7f29f1845d0834eac9a886245474ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 688898829}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &688898833
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688898830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.12756896
-  m_Height: 0.6012293
-  m_Direction: 0
-  m_Center: {x: 0.015626574, y: 0, z: 0.12}
 --- !u!1 &692795673
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5487,20 @@ MonoBehaviour:
   shineCounterLimit: 10
   onlyInteractWhenCrouching: 0
   beingLookedAt: 0
+--- !u!136 &1419314068
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419314062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2064864
+  m_Height: 0.6627715
+  m_Direction: 0
+  m_Center: {x: 0.29383773, y: -0.0012822803, z: 0.13980316}
 --- !u!1001 &1419653258
 PrefabInstance:
   m_ObjectHideFlags: 0

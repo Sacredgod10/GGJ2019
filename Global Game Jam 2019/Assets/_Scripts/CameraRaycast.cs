@@ -35,7 +35,6 @@ public class CameraRaycast : MonoBehaviour
                 var interactAble = lastObjectSeen.transform.gameObject.GetComponent<InteractableObject>();
                 interactAble.shineCounter++;
                 interactAble.beingLookedAt = true;
-                Debug.Log(lastObjectSeen + " " + interactAble.beingLookedAt);
             }
         }
         else
@@ -45,7 +44,6 @@ public class CameraRaycast : MonoBehaviour
                 var interactAble = lastObjectSeen.transform.gameObject.GetComponent<InteractableObject>();
                 interactAble.shineCounter = 0;
                 interactAble.beingLookedAt = false;
-                Debug.Log(lastObjectSeen + " " + interactAble.beingLookedAt);
             }
         }
     }

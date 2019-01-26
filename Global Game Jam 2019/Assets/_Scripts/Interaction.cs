@@ -64,6 +64,7 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.SHOWER:
                 {
+                    StopAllCoroutines();
                     StartCoroutine(ShowerStream());
                     break;
                 }
@@ -90,6 +91,7 @@ public class Interaction : MonoBehaviour
     public IEnumerator ShowerStream()
     {
         // poor water
+        Debug.Log("Water is pooring you just cant see it");
         yield return new WaitForSeconds(10);
         // Stop pooring water
         Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
