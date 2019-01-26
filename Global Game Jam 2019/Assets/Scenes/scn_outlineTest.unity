@@ -112,6 +112,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &138412278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1379886452854432587, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 366661522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &138412284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138412278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &366661522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +137,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5963405537432710233, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
+        type: 3}
+      propertyPath: shineCounterLimit
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shineCounterLimit
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6814528338105175010, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
         type: 3}
       propertyPath: m_Name
@@ -178,20 +205,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3398066694756043903, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 487333b6bd8ee7141b8be06ce8cc2de0, type: 2}
-    - target: {fileID: 6559360935172118000, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 487333b6bd8ee7141b8be06ce8cc2de0, type: 2}
-    - target: {fileID: 6945377056951620, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e44028db1c16e4ebbbd63c9ab2c2f4, type: 3}
@@ -889,29 +902,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1589512121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c740b6fc9360e9c4e861d5a74770a5e2, type: 3}
+  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 0
-  glowIntensity: 1
-  shineCounter: 0
-  previousShineCounter: 0
-  shineCounterLimit: 10
-  onlyInteractWhenCrouching: 0
-  beingLookedAt: 0
---- !u!65 &1589512126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589512121}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.019030713, y: 0.016871708, z: 0.06557823}
-  m_Center: {x: -1.9481413e-25, y: 0.00000000745972, z: -0.0019714232}
 --- !u!1 &1630313587
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +917,6 @@ GameObject:
   - component: {fileID: 1630313590}
   - component: {fileID: 1630313589}
   - component: {fileID: 1630313588}
-  - component: {fileID: 1630313592}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1004,24 +996,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1630313592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1630313587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c329bca5a78ae4ab8647d5cac08707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionRange: 0
-  glowIntensity: 1
-  shineCounter: 0
-  shineCounterLimit: 200
-  onlyInteractWhenCrouching: 0
-  beingLookedAt: 0
 --- !u!1 &2001744170
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class InteractableObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     public float interactionRange;
     public float glowIntensity = 1;
@@ -11,19 +11,27 @@ public abstract class InteractableObject : MonoBehaviour
     public bool onlyInteractWhenCrouching;
     public bool beingLookedAt;
     private Material objectMaterial;
+    private Interaction interaction;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("ResetCheck");
         objectMaterial = GetComponent<Renderer>().material;
+        interaction = GetComponent<Interaction>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        BalanceTheShine();
         CheckForEmission();
+
+        if(shineCounter > (shineCounterLimit * 0.5) && Input.GetKeyDown(KeyCode.F))
+        {
+            interaction.Interact();
+        }
+
+        BalanceTheShine();
     }
 
     private void BalanceTheShine()
@@ -43,14 +51,13 @@ public abstract class InteractableObject : MonoBehaviour
     {
         while(true)
         {
-            Debug.Log("Boop");
             previousShineCounter = shineCounter;
-            yield return new WaitForSeconds(3f);
-            if (previousShineCounter == shineCounterLimit)
+            yield return new WaitForSeconds(2f);
+            if (previousShineCounter >= shineCounterLimit)
             {
-                shineCounter--;
+                shineCounter = shineCounterLimit - 1;
             }
-            else if (previousShineCounter == shineCounter)
+            else if (previousShineCounter == shineCounter && previousShineCounter != shineCounterLimit)
             {
                 shineCounter = 0;
             }
@@ -59,7 +66,7 @@ public abstract class InteractableObject : MonoBehaviour
     //Checks whether the player has looked at the object for long enough
     void CheckForEmission()
     {
-        if (shineCounter >= shineCounterLimit)
+        if (shineCounter >= (shineCounterLimit - 1))
         {
             ShowEmission();
         }

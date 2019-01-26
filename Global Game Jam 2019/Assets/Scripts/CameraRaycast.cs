@@ -22,10 +22,6 @@ public class CameraRaycast : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
-
-            //Do the thing please
             hit.transform.gameObject.GetComponent<InteractableObject>().shineCounter++;
         }
     }
