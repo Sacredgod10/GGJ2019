@@ -5,4 +5,5 @@ using UnityEngine;
 public class HiddenItems : MonoBehaviour
 {
     public List<GameObject> allHiddenItems;
+    public List<GameObject> blockingItems;
 }

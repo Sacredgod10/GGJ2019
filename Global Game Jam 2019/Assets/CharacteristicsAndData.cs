@@ -56,23 +56,33 @@ public class CharacteristicsAndData : MonoBehaviour
             if (happyPercentages[i] < 100)
             {
                 happyPercentages[i] += 15; // Add 15 percent to each unlocked room's happyness
+                for (int j = 0; j < allRooms[i].GetComponent<HiddenItems>().blockingItems.Count; j++)
+                {
+                    allRooms[i].GetComponent<HiddenItems>().blockingItems[j].SetActive(false);
+                }
+            }
+
+            if (happyPercentages[i] >= 0 && happyPercentages[i] < 25)
+            {
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[0].SetActive(true);
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[1].SetActive(true);
             }
 
             if (happyPercentages[i] >= 25 && happyPercentages[i] < 50) // Reward 1
             {
-                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[0].SetActive(true);
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[2].SetActive(true);
             }
             else if (happyPercentages[i] >= 50 && happyPercentages[i] < 75) // Reward 2
             {
-                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[1].SetActive(true);
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[3].SetActive(true);
             }
             else if (happyPercentages[i] >= 75 && happyPercentages[i] < 100) // Reward 3
             {
-                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[2].SetActive(true);
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[4].SetActive(true);
             }
             else if (happyPercentages[i] >= 100) // Reward 4
             {
-                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[3].SetActive(true);
+                allRooms[i].GetComponent<HiddenItems>().allHiddenItems[5].SetActive(true);
             }
         }
 
