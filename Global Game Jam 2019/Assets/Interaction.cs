@@ -12,7 +12,8 @@ public class Interaction : MonoBehaviour
     {
         REMOTE,
         PILLOW,
-        MONITOR
+        MONITOR,
+        PAPER
     }
 
     public InteractionType interactionType;
@@ -35,6 +36,11 @@ public class Interaction : MonoBehaviour
             case InteractionType.MONITOR:
                 {
                     // Zoom cam
+                    break;
+                }
+            case InteractionType.PAPER:
+                {
+                    Destroy(gameObject);
                     break;
                 }
         }
