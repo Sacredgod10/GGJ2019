@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 1.0F;
+    public float speedNormal;
+    public float speed;
+    public float speedCrouched;
     public float gravity = 20.0F;
     // Drag & Drop the camera in this field, in the inspector
     public Transform cameraTransform;
