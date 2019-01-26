@@ -81,7 +81,10 @@ public class CharacteristicsAndData : MonoBehaviour
             AddNewRoom();
         }
 
-        player.transform.Translate(spawnPos);
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = spawnPos;
+        player.GetComponent<CharacterController>().enabled = true;
+
     }
 
     public void AddNewRoom()
