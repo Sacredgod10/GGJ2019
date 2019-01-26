@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_bed_mattress
+  m_Name: interactible
   m_Shader: {fileID: 4800000, guid: 06b07f89e6009b24291a6e769320e24a, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _LIT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,47 +84,47 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionStrength: 0
-    - _EmissiveBlink_Max: 0.5
-    - _EmissiveBlink_Min: 0
-    - _EmissiveBlink_Velocity: 3
+    - _EmissiveBlink_Max: 1
+    - _EmissiveBlink_Min: 1
+    - _EmissiveBlink_Velocity: 4
     - _EmissiveScroll_Interval: 20
     - _EmissiveScroll_Velocity: 10
     - _EmissiveScroll_Width: 10
-    - _Gloss: 0
+    - _Gloss: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.077
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HARD_SPECULAR: 0
-    - _LineWidth: 0
-    - _Lit: 0
+    - _LineWidth: 500
+    - _Lit: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 0
+    - _NormalIntensity: 1
     - _OcclusionStrength: 1
-    - _OutlineEmission: 0
+    - _OutlineEmission: 0.1
     - _Parallax: 0.02
     - _RimLightColorBias: 0
-    - _RimSharpness: 0.25
+    - _RimSharpness: 0
     - _RimStrength: 0
-    - _RimWidth: 0.8
+    - _RimWidth: 0
     - _SCROLLING_EMISSION: 0
-    - _ShadowOffset: 0.18
-    - _ShadowStrength: 0.928
+    - _ShadowOffset: 0
+    - _ShadowStrength: 0.474
     - _SmoothnessTextureChannel: 0
     - _SpecularBias: 0
     - _SpecularHighlights: 1
     - _SpecularSize: 0.005
     - _SpecularStrength: 0
-    - _Speed: 0.05
+    - _Speed: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0.5660378, b: 0.16934693, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveScroll_Direction: {r: 0, g: -10, b: 0, a: 0}
-    - _LightDirection: {r: 0.01, g: 1, b: -0.005, a: 0}
-    - _LineColor: {r: 0, g: 0.8023882, b: 1, a: 1}
-    - _RimLightColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LightDirection: {r: 0, g: 1, b: 0, a: 0}
+    - _LineColor: {r: 0, g: 0.754717, b: 0.5146811, a: 1}
+    - _RimLightColor: {r: 0, g: 0.506177, b: 0.745283, a: 1}
     - _RimTexPanSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
