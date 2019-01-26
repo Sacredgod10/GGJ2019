@@ -42,9 +42,33 @@ public class CharacteristicsAndData : MonoBehaviour
     public Pets favPet;
     public Characteristic characteristic;
     public int date;
+    public List<GameObject> currentRooms;
+    public int[] happyPercentages;
+    public GameObject player;
+    public Vector3 spawnPos;
+    public GameObject[] allRooms;
+
+    public void Start()
+    {
+        happyPercentages = new int[currentRooms.Count];
+    }
 
     public void Sleep()
     {
         date++;
+        player.transform.position = spawnPos;
+        for (int i = 0; i < happyPercentages.Length; i++)
+        {
+            if (i < 100)
+            {
+                i += 15;
+            }
+        }
     }
+
+    public void AddNewRoom()
+    {
+
+    }
+
 }
