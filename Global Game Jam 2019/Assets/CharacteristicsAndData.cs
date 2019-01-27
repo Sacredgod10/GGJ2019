@@ -45,6 +45,7 @@ public class CharacteristicsAndData : MonoBehaviour
     public int currentRooms;
     public List<int> happyPercentages;
     public GameObject player;
+    public GameObject startdoor;
     public Vector3 spawnPos;
     public GameObject[] allRooms;
 
@@ -99,6 +100,7 @@ public class CharacteristicsAndData : MonoBehaviour
 
     public void AddNewRoom()
     {
+        startdoor.transform.localEulerAngles = new Vector3(0, 0, 0);
         currentRooms++;
         happyPercentages.Add(new int());
         allRooms[currentRooms].SetActive(true);

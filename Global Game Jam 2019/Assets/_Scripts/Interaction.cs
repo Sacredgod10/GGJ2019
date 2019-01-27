@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour
     public GameObject player;
     public GameObject bottleNote;
     public GameObject showerNote;
+    public GameObject afzuigkapNote;
     public Camera gameCamera;
     public bool itemInHand = false;
     public float lerpSpeed = 1;
@@ -21,7 +22,9 @@ public class Interaction : MonoBehaviour
         MONITOR,
         PAPER,
         SHOWER,
-        BOTTLE
+        BOTTLE,
+        POT,
+        AFZUIGKAP
     }
 
     public InteractionType interactionType;
