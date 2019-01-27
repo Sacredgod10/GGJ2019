@@ -106,12 +106,4 @@ public class CharacteristicsAndData : MonoBehaviour
         happyPercentages.Add(new int());
         allRooms[currentRooms].SetActive(true);
     }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Sleep();
-        }
-    }
 }
