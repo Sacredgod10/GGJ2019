@@ -1,23 +1,39 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MonitorInput : MonoBehaviour
 {
     public GameObject player;
+    public Camera gameCamera;
+    public int date;
+    public TMP_InputField textMesh;
+    private bool lerping;
+    public bool haveSlept;
+    public string inputValue;
+    private bool monitorDone;
     public Renderer monitorScreen;
-    public int numberOfInputSlots = 5;
-    public KeyCode[] inputArray;
-    public KeyCode lastCharacter;
+    public Vector3 startingCameraPosition, endPosition;
     // Start is called before the first frame update
+
     void OnEnable()
     {
-        inputArray = new KeyCode[numberOfInputSlots];
+        date = CharacteristicsAndData.Instance.date;
+        haveSlept = false;
+        startingCameraPosition = gameCamera.transform.position;
+        GameObject cameraPerspective = GameObject.Find("MonitorCamPerspective");
+        endPosition = cameraPerspective.transform.position;
+        lerping = true;
+        monitorDone = false;
+        textMesh.gameObject.SetActive(true);
+        textMesh.ActivateInputField();
         player.GetComponent<PlayerMovement>().isFrozen = true;
-        monitorScreen.material.SetFloat("_Desaturation", 0);
         monitorScreen.material.SetFloat("_EmissiveBlink_Min", 0.5f);
         monitorScreen.material.SetFloat("_EmissiveBlink_Max", 1f);
         monitorScreen.material.SetFloat("_EmissiveBlink_Velocity", 5f);
+        monitorScreen.material.SetFloat("_EmissiveScroll_Width", 20);
     }
 
     void OnDisable()
@@ -25,62 +41,97 @@ public class MonitorInput : MonoBehaviour
         //teleport player to monitor position
         player.GetComponent<PlayerMovement>().isFrozen = false;
     }
+
     // Update is called once per frame
     void Update()
     {
-        CheckForInput();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (lerping)
         {
-            gameObject.GetComponent<MonitorInput>().enabled = false;
+            LerpCamera(gameCamera.transform.position, endPosition, 5f);
         }
-        if(numberOfInputSlots == 0)
+        if (Input.GetKeyDown(KeyCode.Escape) || monitorDone)
         {
-            CheckForRightAnswer();
+            ExitMonitor(gameCamera.transform.position, startingCameraPosition, 5f);
+        }
+        inputValue = textMesh.text;
+
+        textMesh.onSubmit.AddListener(delegate { CheckForAnswer(textMesh.text); });
+    }
+
+    public void ExitMonitor(Vector3 curPos, Vector3 endPos, float speed)
+    {
+        gameCamera.transform.localPosition = new Vector3(0, 0.55f, 0);
+        textMesh.gameObject.SetActive(false);
+        player.GetComponent<PlayerMovement>().isFrozen = false;
+        GetComponent<MonitorInput>().enabled = false;
+    }
+    public void LerpCamera(Vector3 curPos, Vector3 endPos, float speed)
+    {
+        gameCamera.transform.position = Vector3.Lerp(curPos, endPos, speed * Time.deltaTime);
+        if (Vector3.Distance(curPos, endPos) < 0.01f)
+        {
+            lerping = false;
         }
     }
 
-    public void CheckForInput()
+    public void CheckForAnswer(string playerInput)
     {
-        foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
+        switch(date)
         {
-            if (Input.GetKeyDown(vKey))
-            {
-                    if (inputArray[0] == KeyCode.None)
-                    {
-                        lastCharacter = vKey;
-                        inputArray[0] = lastCharacter;
-                    numberOfInputSlots--;
-                        Debug.Log("First Character is " + vKey);
-                    }
-                    else if (inputArray[1] == KeyCode.None)
+            case 25:
+                if(playerInput == "AN" || playerInput == "NA")
                 {
-                    lastCharacter = vKey;
-                    numberOfInputSlots--;
-                    inputArray[1] = lastCharacter;
-                    Debug.Log("Second Character is " + vKey);
+                    GoodAnswer();
+                    break;
                 }
-            }
+                else
+                {
+                    WrongAnswer();
+                }
+                break;
+            case 26:
+                if (playerInput == "CE" || playerInput == "EC")
+                {
+                    GoodAnswer();
+                    break;
+                }
+                else
+                {
+                    WrongAnswer();
+                }
+                break;
+            case 27:
+                if(playerInput == "LV" || playerInput == "VL")
+                {
+                    GoodAnswer();
+                    break;
+                }
+                else
+                {
+                    WrongAnswer();
+                }
+                break;
         }
     }
 
-    public void CheckForRightAnswer()
+    public void GoodAnswer()
     {
-        if((inputArray[0] == KeyCode.A && inputArray[1] == KeyCode.N) ||
-           (inputArray[0] == KeyCode.N && inputArray[1] == KeyCode.A)) {
-            Debug.Log("Victory!");
-            monitorScreen.material.SetFloat("_Desaturation", 0);
+        if (!haveSlept)
+        {
+            haveSlept = true;
+            Debug.Log("Yes");
             monitorScreen.material.SetFloat("_EmissiveBlink_Min", 0.5f);
             monitorScreen.material.SetFloat("_EmissiveBlink_Max", 1f);
             monitorScreen.material.SetFloat("_EmissiveBlink_Velocity", 5f);
-            monitorScreen.material.SetFloat("_EmissiveScroll_Width" , 0);
-            //Play success sound
+            monitorScreen.material.SetFloat("_EmissiveScroll_Width", 0);
+            CharacteristicsAndData.Instance.Sleep();
+            monitorDone = true;
         }
-        else
-        {
-            inputArray[0] = KeyCode.None;
-            inputArray[1] = KeyCode.None;
-            Debug.Log("Nope!");
-            //Play fail sound
-        }
+    }
+
+    public void WrongAnswer()
+    {
+        Debug.Log("Wrong!");
+        textMesh.text = "";
     }
 }

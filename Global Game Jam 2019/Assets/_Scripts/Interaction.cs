@@ -34,14 +34,6 @@ public class Interaction : MonoBehaviour
 
     public InteractionType interactionType;
 
-    private void Update()
-    {
-        if(lerping)
-        {
-            LerpCamera(startPosition, endPosition, lerpSpeed);
-        }
-    }
-
     public void Interact()
     {
         switch (interactionType)
@@ -60,10 +52,6 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.MONITOR:
                 {
-                    GameObject cameraPerspective = GameObject.Find("MonitorCamPerspective");
-                    lerping = true;
-                    startPosition = gameCamera.transform.position;
-                    endPosition = cameraPerspective.transform.position;
                     gameObject.GetComponent<MonitorInput>().enabled = true;
                     break;
                 }
@@ -137,16 +125,6 @@ public class Interaction : MonoBehaviour
         var flash = GameObject.Find("Canvas").GetComponent<Flash>();
         flash.good = good;
         flash.FlashIn();
-    }
-
-    public void LerpCamera(Vector3 curPos, Vector3 endPos, float speed)
-    {
-        gameCamera.transform.position = Vector3.Lerp(curPos, endPos, speed * Time.deltaTime);
-        startPosition = gameCamera.transform.position;
-        if(Vector3.Distance(curPos, endPos) < 0.01f)
-        {
-            lerping = false;
-        }
     }
 
     public IEnumerator ShowerStream()
