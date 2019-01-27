@@ -22,8 +22,8 @@ public class CameraMovementPlayer : MonoBehaviour
 
     public PlayerMovement playerMovement;
 
-    private float yaw = 77.819f;
-    private float pitch = 0.0f;
+    public float yaw = 77.819f;
+    public float pitch = 0.0f;
     private float cameraHeight = 0.0f;
 
     private CursorLockMode cursorState;

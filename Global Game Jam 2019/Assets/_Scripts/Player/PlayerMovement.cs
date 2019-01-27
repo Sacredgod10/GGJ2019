@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float speedCrouched;
     public float gravity = 20.0F;
+    public float jumpForce;
     public bool isFrozen;
-    public int jumpPower;
+    public LayerMask layerMask;
     bool onTramp = false;
     // Drag & Drop the camera in this field, in the inspector
     public Transform cameraTransform;
@@ -18,45 +19,34 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-        if (controller.isGrounded && !isFrozen)
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = cameraTransform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            jumpForce = 3;
+        }
+        else
+        {
+            jumpForce = 1.5f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !onTramp)
+        if (controller.isGrounded && !isFrozen)
         {
-            Jump(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && onTramp)
-        {
-            Jump(3);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                moveDirection = new Vector3(Input.GetAxis("Horizontal"), jumpForce, Input.GetAxis("Vertical"));
+                moveDirection = cameraTransform.TransformDirection(moveDirection);
+                moveDirection *= speed;
+            }
+            else
+            {
+                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                moveDirection = cameraTransform.TransformDirection(moveDirection);
+                moveDirection *= speed;
+            }
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "T")
-        {
-            onTramp = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "T")
-        {
-            onTramp = false;
-        }
-    }
-
-    private void Jump(float modifier)
-    {
-        Debug.Log("Jump");
-        GetComponent<Rigidbody>().velocity = new Vector3(0f, jumpPower * modifier, 0f);
     }
 }
