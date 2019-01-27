@@ -109,7 +109,7 @@ public class CharacteristicsAndData : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Sleep();
         }

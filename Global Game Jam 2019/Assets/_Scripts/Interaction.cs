@@ -95,13 +95,13 @@ public class Interaction : MonoBehaviour
                 {
                     StopAllCoroutines();
                     GetComponent<SoundController>().PlaySoundAtLocation();
+                    StopCoroutine(WasteEnergy());
                     if (characteristicsAndData.smoking)
                     {
                         var main = smokeGen.main;
                         main.startLifetime = 1.5f;
                         StartCoroutine(Steam());
                     }
-                    StopCoroutine(WasteEnergy());
                     break;
                 }
             case InteractionType.DOOR:
@@ -158,6 +158,7 @@ public class Interaction : MonoBehaviour
         }
         waterGroup2.SetActive(false);
         waterGroup1.SetActive(false);
+        GetComponent<SoundController>().FadeOut();
     }
 
     public IEnumerator Steam()
