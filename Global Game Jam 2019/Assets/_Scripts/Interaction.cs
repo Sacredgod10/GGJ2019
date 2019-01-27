@@ -8,6 +8,7 @@ public class Interaction : MonoBehaviour
     public GameObject bottleNote;
     public GameObject showerNote;
     public GameObject afzuigkapNote;
+    public ParticleSystem smokeGen;
     public Camera gameCamera;
     public bool itemInHand = false;
     public float lerpSpeed = 1;
@@ -78,6 +79,19 @@ public class Interaction : MonoBehaviour
                     Destroy(gameObject);
                     break;
                 }
+            case InteractionType.POT:
+                {
+                    smokeGen.gameObject.SetActive(true);
+                    break;
+                }
+            case InteractionType.AFZUIGKAP:
+                {
+                    // Maak herrie en eindig met spitten van kaartje
+                    var main = smokeGen.main;
+                    main.startLifetime = 1.5f;
+                    StartCoroutine(Steam());
+                    break;
+                }
         }
     }
 
@@ -97,6 +111,14 @@ public class Interaction : MonoBehaviour
         Debug.Log("Water is pooring you just cant see it");
         yield return new WaitForSeconds(10);
         // Stop pooring water
+        Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public IEnumerator Steam()
+    {
+        yield return new WaitForSeconds(6);
+        var main = smokeGen.main;
+        main.startLifetime = 0.1f;
         Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
     }
 }
