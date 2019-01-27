@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 63b7a15eb7e9ff140bcbfbcbff291011
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2100000: succulent_euphor
+    2100002: succulent_euphor1
+    2100004: succulent_euphor2
+    2100006: succulent_euphor3
+    2100008: succulent_euphor4
+    2100010: succulent_euphor5
+    2100012: succulent_euphor6
+    2100014: succulent_euphor7
+    2100016: succulent_euphor8
+    2100018: succulent_euphor9
+    2100020: succulent_euphor10
+    2100022: succulent_euphor11
+    2100024: succulent_euphor12
+    2100026: succulent_euphor13
+    2100028: succulent_euphor14
+    2100030: succulent_euphor15
+    2100032: succulent_euphor16
+    2100034: succulent_euphor17
+    2100036: succulent_euphor18
+    2100038: succulent_euphor19
+    2100040: succulent_euphor20
+    2100042: succulent_euphor21
+    2100044: succulent_euphor22
+    2100046: succulent_euphor23
+    2100048: succulent_euphor24
+    2100050: succulent_euphor25
+    2100052: succulent_euphor26
+    2100054: succulent_euphor27
+    2100056: succulent_euphor28
+    2100058: succulent_euphor29
+    2100060: succulent_euphor30
+    2100062: succulent_euphor31
+    2100064: succulent_euphor32
+    2100066: succulent_euphor33
+    2100068: succulent_euphor34
+    2100070: succulent_euphor35
+    2100072: succulent_euphor36
+    2100074: succulent_euphor37
+    2100076: succulent_euphor38
+    2100078: succulent_euphor39
+    2100080: succulent_euphor40
+    2100082: succulent_euphor41
+    2100084: succulent_euphor42
+    2100086: succulent_euphor43
+    2100088: succulent_euphor44
+    2100090: succulent_euphor45
+    2100092: succulent_euphor46
+    2100094: succulent_euphor47
+    2100096: succulent_euphor48
+    2100098: succulent_euphor49
+    2100100: succulent_euphor50
+    2100102: succulent_euphor51
+    2100104: succulent_euphor52
+    2100106: succulent_euphor53
+    2100108: succulent_euphor54
+    2100110: succulent_euphor55
+    2100112: succulent_euphor56
+    2100114: succulent_euphor57
+    2100116: succulent_euphor58
+    2100118: succulent_euphor59
+    2100120: succulent_euphor60
+    2100122: succulent_euphor61
+    2100124: succulent_euphor62
+    2100126: succulent_euphor63
+    2100128: succulent_euphor64
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: succulent_
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
