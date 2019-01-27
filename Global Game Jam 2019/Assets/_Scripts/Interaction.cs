@@ -8,13 +8,13 @@ public class Interaction : MonoBehaviour
     public GameObject player;
     public GameObject noteToDrop;
     public ParticleSystem smokeGen;
+    public GameObject waterGroup1, waterGroup2;
     public Camera gameCamera;
     public bool itemInHand = false;
     public float lerpSpeed = 1;
     public Vector3 placeToLand;
     public int roomNr;
     bool doorOpen = false;
-    bool canInteract = true;
 
     private bool lerping;
     private Vector3 startPosition, endPosition;
@@ -29,7 +29,9 @@ public class Interaction : MonoBehaviour
         BOTTLE,
         POT,
         AFZUIGKAP,
-        DOOR
+        DOOR,
+        GOODPRACTISE,
+        BADPRACTISE
     }
 
     public InteractionType interactionType;
@@ -104,17 +106,26 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.DOOR:
                 {
-                    if (!doorOpen && canInteract)
+                    if (!doorOpen)
                     {
                         doorOpen = true;
                         gameObject.transform.localEulerAngles = new Vector3(0, -90, 0);
                     }
-                    else if (doorOpen && canInteract)
+                    else if (doorOpen)
                     {
                         doorOpen = false;
                         gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
                     }
-                    StartCoroutine(ResetInteraction());
+                    break;
+                }
+            case InteractionType.GOODPRACTISE:
+                {
+                    ActivateFlash(true);
+                    break;
+                }
+            case InteractionType.BADPRACTISE:
+                {
+                    ActivateFlash(false);
                     break;
                 }
         }
@@ -129,11 +140,24 @@ public class Interaction : MonoBehaviour
 
     public IEnumerator ShowerStream()
     {
-        // poor water
-        Debug.Log("Water is pooring you just cant see it");
+        StartCoroutine(WaterStream());
         yield return new WaitForSeconds(10);
         // Stop pooring water
         Instantiate(noteToDrop, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public IEnumerator WaterStream()
+    {
+        bool active = true;
+        for (int i = 0; i < 20; i++)
+        {
+            waterGroup1.SetActive(active);
+            waterGroup2.SetActive(!active);
+            active = !active;
+            yield return new WaitForSeconds(0.5f); 
+        }
+        waterGroup2.SetActive(false);
+        waterGroup1.SetActive(false);
     }
 
     public IEnumerator Steam()
@@ -172,12 +196,5 @@ public class Interaction : MonoBehaviour
             ActivateFlash(false);
             StartCoroutine(WasteEnergy());
         }
-    }
-
-    private IEnumerator ResetInteraction()
-    {
-        canInteract = !canInteract;
-        yield return new WaitForSeconds(2);
-        canInteract = !canInteract;
     }
 }
