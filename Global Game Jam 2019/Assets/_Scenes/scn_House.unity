@@ -351,6 +351,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 400164, guid: 07c9d07b363f8e44a89fddfa6a9a478f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 400164, guid: 07c9d07b363f8e44a89fddfa6a9a478f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400164, guid: 07c9d07b363f8e44a89fddfa6a9a478f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: 07c9d07b363f8e44a89fddfa6a9a478f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -994,14 +1006,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 0}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
+  noteToDrop: {fileID: 0}
   smokeGen: {fileID: 0}
   gameCamera: {fileID: 754305832}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 3
 --- !u!114 &187557292
 MonoBehaviour:
@@ -1983,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 2887820507268355205, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2887820507268355204, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
@@ -2790,14 +2802,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 626367156}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
+  noteToDrop: {fileID: 4921860130187667478, guid: f26e24c3a0a236f44b4380146b62aba8,
+    type: 3}
   smokeGen: {fileID: 1232880232}
   gameCamera: {fileID: 0}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 10, z: 20}
   interactionType: 7
 --- !u!1 &626367155
 GameObject:
@@ -2841,6 +2854,7 @@ MonoBehaviour:
   - {fileID: 103547732}
   - {fileID: 448900450}
   - {fileID: 813213892}
+  smoking: 0
 --- !u!4 &626367157
 Transform:
   m_ObjectHideFlags: 0
@@ -6051,14 +6065,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 626367156}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
+  noteToDrop: {fileID: 0}
   smokeGen: {fileID: 1232880232}
   gameCamera: {fileID: 754305832}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 6
 --- !u!136 &1355338026
 CapsuleCollider:
@@ -6411,14 +6425,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 0}
   player: {fileID: 0}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
+  noteToDrop: {fileID: 0}
   smokeGen: {fileID: 0}
   gameCamera: {fileID: 0}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 0
 --- !u!4 &1390561807
 Transform:
@@ -6543,15 +6557,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 0}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 4921860130187667478, guid: a20a8701667835d40aece4b5cd0fb4a3,
+  noteToDrop: {fileID: 4921860130187667478, guid: a20a8701667835d40aece4b5cd0fb4a3,
     type: 3}
-  afzuigkapNote: {fileID: 0}
   smokeGen: {fileID: 0}
   gameCamera: {fileID: 754305832}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 4
 --- !u!114 &1419314066
 MonoBehaviour:
@@ -8111,14 +8125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 0}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 0}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
+  noteToDrop: {fileID: 0}
   smokeGen: {fileID: 0}
   gameCamera: {fileID: 754305832}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 2
 --- !u!114 &1726583629
 MonoBehaviour:
@@ -9236,15 +9250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 0}
   player: {fileID: 833317935}
-  bottleNote: {fileID: 8385264626614032145, guid: 2127dca6019e3244cb4fd613ce89f913,
+  noteToDrop: {fileID: 8385264626614032145, guid: 2127dca6019e3244cb4fd613ce89f913,
     type: 3}
-  showerNote: {fileID: 0}
-  afzuigkapNote: {fileID: 0}
   smokeGen: {fileID: 0}
   gameCamera: {fileID: 754305832}
   itemInHand: 0
   lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
   interactionType: 5
 --- !u!65 &1810783999
 BoxCollider:

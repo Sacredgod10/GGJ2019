@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    public CharacteristicsAndData characteristicsAndData;
     public GameObject player;
-    public GameObject bottleNote;
-    public GameObject showerNote;
-    public GameObject afzuigkapNote;
+    public GameObject noteToDrop;
     public ParticleSystem smokeGen;
     public Camera gameCamera;
     public bool itemInHand = false;
     public float lerpSpeed = 1;
+    public Vector3 placeToLand;
 
     private bool lerping;
     private Vector3 startPosition, endPosition;
@@ -74,7 +74,7 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.BOTTLE:
                 {
-                    GameObject note = Instantiate(bottleNote, gameObject.transform.position + new Vector3(0, 10, 0), Quaternion.identity);
+                    GameObject note = Instantiate(noteToDrop, gameObject.transform.position + new Vector3(0, 10, 0), Quaternion.identity);
                     note.transform.eulerAngles += new Vector3(90, 0, 0);
                     Destroy(gameObject);
                     break;
@@ -82,14 +82,19 @@ public class Interaction : MonoBehaviour
             case InteractionType.POT:
                 {
                     smokeGen.gameObject.SetActive(true);
+                    characteristicsAndData.smoking = true;
                     break;
                 }
             case InteractionType.AFZUIGKAP:
                 {
-                    // Maak herrie en eindig met spitten van kaartje
-                    var main = smokeGen.main;
-                    main.startLifetime = 1.5f;
-                    StartCoroutine(Steam());
+                    StopAllCoroutines();
+                    // Maak herrie 
+                    if (characteristicsAndData.smoking)
+                    {
+                        var main = smokeGen.main;
+                        main.startLifetime = 1.5f;
+                        StartCoroutine(Steam());
+                    }
                     break;
                 }
         }
@@ -111,7 +116,7 @@ public class Interaction : MonoBehaviour
         Debug.Log("Water is pooring you just cant see it");
         yield return new WaitForSeconds(10);
         // Stop pooring water
-        Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
+        Instantiate(noteToDrop, gameObject.transform.position, Quaternion.identity);
     }
 
     public IEnumerator Steam()
@@ -119,6 +124,15 @@ public class Interaction : MonoBehaviour
         yield return new WaitForSeconds(6);
         var main = smokeGen.main;
         main.startLifetime = 0.1f;
-        Instantiate(showerNote, gameObject.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        main.startLifetime = 3f;
+        characteristicsAndData.smoking = false;
+        smokeGen.gameObject.SetActive(false);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
     }
 }

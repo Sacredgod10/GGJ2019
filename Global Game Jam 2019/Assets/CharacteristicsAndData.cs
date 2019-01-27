@@ -48,6 +48,7 @@ public class CharacteristicsAndData : MonoBehaviour
     public GameObject startdoor;
     public Vector3 spawnPos;
     public GameObject[] allRooms;
+    public bool smoking = false;
 
     public void Sleep()
     {
