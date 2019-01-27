@@ -69,6 +69,7 @@ public class Interaction : MonoBehaviour
             case InteractionType.SHOWER:
                 {
                     StopAllCoroutines();
+                    GetComponent<SoundController>().PlaySoundAtLocation();
                     StartCoroutine(ShowerStream());
                     break;
                 }
