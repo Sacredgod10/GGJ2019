@@ -83,12 +83,13 @@ public class Interaction : MonoBehaviour
                 {
                     smokeGen.gameObject.SetActive(true);
                     characteristicsAndData.smoking = true;
+                    GetComponent<SoundController>().PlaySoundAtLocation();
                     break;
                 }
             case InteractionType.AFZUIGKAP:
                 {
                     StopAllCoroutines();
-                    // Maak herrie 
+                    GetComponent<SoundController>().PlaySoundAtLocation();
                     if (characteristicsAndData.smoking)
                     {
                         var main = smokeGen.main;
@@ -124,15 +125,18 @@ public class Interaction : MonoBehaviour
         yield return new WaitForSeconds(6);
         var main = smokeGen.main;
         main.startLifetime = 0.1f;
-        yield return new WaitForSeconds(1);
+        SoundController pot = GameObject.Find("POT").GetComponent<SoundController>();
+        pot.FadeOut();
+        GetComponent<SoundController>().FadeOut();
+        yield return new WaitForSeconds(.5f);
         main.startLifetime = 3f;
         characteristicsAndData.smoking = false;
         smokeGen.gameObject.SetActive(false);
-        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 15, 0), Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
-        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 15, 0), Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
-        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 20, 0), Quaternion.identity);
+        Instantiate(noteToDrop, player.transform.position + new Vector3(0, 15, 0), Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
     }
 }
