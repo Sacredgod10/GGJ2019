@@ -1095,17 +1095,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: door1
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 9492dc5f2f8065246aff79aa37a5d908, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9492dc5f2f8065246aff79aa37a5d908, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9492dc5f2f8065246aff79aa37a5d908, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9492dc5f2f8065246aff79aa37a5d908, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 9492dc5f2f8065246aff79aa37a5d908, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1214,6 +1218,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 3
 --- !u!114 &187557292
 MonoBehaviour:
@@ -2214,7 +2219,7 @@ PrefabInstance:
     - target: {fileID: 2887820507268355205, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2887820507268355204, guid: b9ce3f0cc8b30c74d843b4bf55d17635,
         type: 3}
@@ -2960,6 +2965,9 @@ GameObject:
   - component: {fileID: 557546530}
   - component: {fileID: 557546529}
   - component: {fileID: 557546528}
+  - component: {fileID: 557546534}
+  - component: {fileID: 557546533}
+  - component: {fileID: 557546532}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3047,6 +3055,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &557546532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557546527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &557546533
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557546527}
+  m_CullTransparentMesh: 0
+--- !u!114 &557546534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557546527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3eb6309bd220774abdc6e38994f802d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  good: 0
 --- !u!1 &557952805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3247,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 627.86743, y: 1401.9994, z: 39.99999}
   m_Center: {x: 304.38605, y: -9.765864, z: 0}
+--- !u!114 &590761086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590761081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c329bca5a78ae4ab8647d5cac08707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 0
+  glowIntensity: 1
+  shineCounter: 0
+  previousShineCounter: 0
+  shineCounterLimit: 10
+  onlyInteractWhenCrouching: 0
+  beingLookedAt: 0
+--- !u!114 &590761087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590761081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc378e969153a74eb61085fa8cf9870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristicsAndData: {fileID: 626367156}
+  player: {fileID: 833317935}
+  noteToDrop: {fileID: 0}
+  smokeGen: {fileID: 0}
+  gameCamera: {fileID: 0}
+  itemInHand: 0
+  lerpSpeed: 1
+  placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
+  interactionType: 8
 --- !u!1 &595472086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,6 +3424,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 10, z: 20}
+  roomNr: 0
   interactionType: 7
 --- !u!114 &605404956
 MonoBehaviour:
@@ -7221,6 +7321,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 6
 --- !u!136 &1355338026
 CapsuleCollider:
@@ -7446,6 +7547,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 0
 --- !u!4 &1390561807
 Transform:
@@ -7579,6 +7681,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 4
 --- !u!114 &1419314066
 MonoBehaviour:
@@ -9658,6 +9761,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 2
 --- !u!114 &1726583629
 MonoBehaviour:
@@ -10867,6 +10971,7 @@ MonoBehaviour:
   itemInHand: 0
   lerpSpeed: 1
   placeToLand: {x: 0, y: 0, z: 0}
+  roomNr: 0
   interactionType: 5
 --- !u!65 &1810783999
 BoxCollider:

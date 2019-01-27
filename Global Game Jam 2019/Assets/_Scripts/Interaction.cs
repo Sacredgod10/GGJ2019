@@ -12,6 +12,9 @@ public class Interaction : MonoBehaviour
     public bool itemInHand = false;
     public float lerpSpeed = 1;
     public Vector3 placeToLand;
+    public int roomNr;
+    bool doorOpen = false;
+    bool canInteract = true;
 
     private bool lerping;
     private Vector3 startPosition, endPosition;
@@ -25,7 +28,8 @@ public class Interaction : MonoBehaviour
         SHOWER,
         BOTTLE,
         POT,
-        AFZUIGKAP
+        AFZUIGKAP,
+        DOOR
     }
 
     public InteractionType interactionType;
@@ -45,10 +49,12 @@ public class Interaction : MonoBehaviour
             case InteractionType.PILLOW:
                 {
                     Destroy(gameObject);
+                    ActivateFlash(true);
                     break;
                 }
             case InteractionType.REMOTE:
                 {
+                    ActivateFlash(true);
                     Destroy(gameObject);
                     break;
                 }
@@ -63,6 +69,7 @@ public class Interaction : MonoBehaviour
                 }
             case InteractionType.PAPER:
                 {
+                    ActivateFlash(true);
                     Destroy(gameObject);
                     break;
                 }
@@ -70,6 +77,7 @@ public class Interaction : MonoBehaviour
                 {
                     StopAllCoroutines();
                     GetComponent<SoundController>().PlaySoundAtLocation();
+                    ActivateFlash(true);
                     StartCoroutine(ShowerStream());
                     break;
                 }
@@ -77,14 +85,20 @@ public class Interaction : MonoBehaviour
                 {
                     GameObject note = Instantiate(noteToDrop, gameObject.transform.position + new Vector3(0, 10, 0), Quaternion.identity);
                     note.transform.eulerAngles += new Vector3(90, 0, 0);
+                    ActivateFlash(true);
                     Destroy(gameObject);
                     break;
                 }
             case InteractionType.POT:
                 {
+                    if (characteristicsAndData.smoking == false)
+                    {
+                        StartCoroutine(WasteEnergy());
+                    }
                     smokeGen.gameObject.SetActive(true);
                     characteristicsAndData.smoking = true;
                     GetComponent<SoundController>().PlaySoundAtLocation();
+                    roomNr = 1;
                     break;
                 }
             case InteractionType.AFZUIGKAP:
@@ -97,9 +111,32 @@ public class Interaction : MonoBehaviour
                         main.startLifetime = 1.5f;
                         StartCoroutine(Steam());
                     }
+                    StopCoroutine(WasteEnergy());
+                    break;
+                }
+            case InteractionType.DOOR:
+                {
+                    if (!doorOpen && canInteract)
+                    {
+                        doorOpen = true;
+                        gameObject.transform.localEulerAngles = new Vector3(0, -90, 0);
+                    }
+                    else if (doorOpen && canInteract)
+                    {
+                        doorOpen = false;
+                        gameObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+                    }
+                    StartCoroutine(ResetInteraction());
                     break;
                 }
         }
+    }
+
+    public void ActivateFlash(bool good)
+    {
+        var flash = GameObject.Find("Canvas").GetComponent<Flash>();
+        flash.good = good;
+        flash.FlashIn();
     }
 
     public void LerpCamera(Vector3 curPos, Vector3 endPos, float speed)
@@ -124,6 +161,7 @@ public class Interaction : MonoBehaviour
     public IEnumerator Steam()
     {
         yield return new WaitForSeconds(6);
+        ActivateFlash(true);
         var main = smokeGen.main;
         main.startLifetime = 0.1f;
         SoundController pot = GameObject.Find("POT").GetComponent<SoundController>();
@@ -139,5 +177,29 @@ public class Interaction : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Instantiate(noteToDrop, player.transform.position + new Vector3(0, 15, 0), Quaternion.identity);
         yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator WasteEnergy()
+    {
+        yield return new WaitForSeconds(10);
+
+        if (characteristicsAndData.smoking == true)
+        {
+            if (CharacteristicsAndData.Instance.happyPercentages[roomNr] >= 20)
+            {
+                CharacteristicsAndData.Instance.happyPercentages[roomNr] -= 20;
+            }
+            else CharacteristicsAndData.Instance.happyPercentages[roomNr] = 0;
+
+            ActivateFlash(false);
+            StartCoroutine(WasteEnergy());
+        }
+    }
+
+    private IEnumerator ResetInteraction()
+    {
+        canInteract = !canInteract;
+        yield return new WaitForSeconds(2);
+        canInteract = !canInteract;
     }
 }
